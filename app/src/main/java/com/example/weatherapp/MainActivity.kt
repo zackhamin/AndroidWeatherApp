@@ -2,6 +2,7 @@ package com.example.weatherapp
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.GsonBuilder
@@ -15,13 +16,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        callJson()
+        val inputButton = findViewById<Button>(R.id.input_button)
+        inputButton.setOnClickListener(){
+            callJson()
+        }
     }
 
     fun callJson() {
+        val postCode = textPostCodeInput.text
 
         val url =
-            "https://api.weatherbit.io/v2.0/current?city=Manchester&country=GB&key=30de3bdbeba044ed8eec5ae248945ba2"
+            "https://api.weatherbit.io/v2.0/current?postal_code=${postCode}&key=30de3bdbeba044ed8eec5ae248945ba2"
         val request = Request.Builder().url(url).build()
 
         val client = OkHttpClient()
@@ -36,7 +41,7 @@ class MainActivity : AppCompatActivity() {
                 println(weather.data[0].city_name)
                 runOnUiThread {
                     findViewById<TextView>(R.id.api_display)
-                    api_display.text = weather.data[0].city_name
+                    api_display.text = weather.data[0].temp.toString()
                 }
 
             }
@@ -78,7 +83,7 @@ data class Datum(
     val dewpt: Double,
     val snow: Long,
     val uv: Double,
-    val precip: Long,
+    val precip: Float,
     val windDir: Long,
     val sunrise: String,
     val ghi: Double,
