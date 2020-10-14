@@ -2,7 +2,6 @@ package com.example.weatherapp
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_main.*
@@ -15,17 +14,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
             callJson()
-
-      val background = findViewById<ImageView>(R.id.background_image)
-        background.setImageResource(R.drawable.cloudy_wallpaper)
-
     }
 
     fun callJson() {
         val apiKey = "30de3bdbeba044ed8eec5ae248945ba2"
 
         val url =
-            "https://api.weatherbit.io/v2.0/forecast/daily?city=manchester&country=GB&key=${apiKey}"
+            "https://api.weatherbit.io/v2.0/forecast/daily?city=athens&country=gr&key=${apiKey}"
         val request = Request.Builder().url(url).build()
 
         val client = OkHttpClient()
@@ -58,34 +53,35 @@ class MainActivity : AppCompatActivity() {
 
 
                     when (weather.data[0].weather.code) {
-                        802 -> weather_image_view.setImageResource(R.drawable.darkcloudy)
-                        200 -> weather_image_view.setImageResource(R.drawable.thunderstorm)
-                        201 -> weather_image_view.setImageResource(R.drawable.thunderstorm)
-                        202 -> weather_image_view.setImageResource(R.drawable.thunderstorm)
-                        230 -> weather_image_view.setImageResource(R.drawable.thunderstorm)
-                        231 -> weather_image_view.setImageResource(R.drawable.thunderstorm)
-                        232 -> weather_image_view.setImageResource(R.drawable.thunderstorm)
-                        233 -> weather_image_view.setImageResource(R.drawable.thunderstorm)
 
-                        300 -> weather_image_view.setImageResource(R.drawable.rainy)
-                        301 -> weather_image_view.setImageResource(R.drawable.rainy)
-                        302 -> weather_image_view.setImageResource(R.drawable.rainy)
-                        500 -> weather_image_view.setImageResource(R.drawable.rainy)
-                        501 -> weather_image_view.setImageResource(R.drawable.rainy)
-                        502 -> weather_image_view.setImageResource(R.drawable.rainy)
-                        511 -> weather_image_view.setImageResource(R.drawable.rainy)
-                        520 -> weather_image_view.setImageResource(R.drawable.rainy)
-                        521 -> weather_image_view.setImageResource(R.drawable.rainy)
-                        522 -> weather_image_view.setImageResource(R.drawable.rainy)
-                        900 -> weather_image_view.setImageResource(R.drawable.rainy)
-
-                        800 -> weather_image_view.setImageResource(R.drawable.sunsout)
-
-                        801 -> weather_image_view.setImageResource(R.drawable.suncloud_copy)
-                        802 -> weather_image_view.setImageResource(R.drawable.sunsout)
-
-                        803 -> weather_image_view.setImageResource(R.drawable.darkcloudy)
-                        804 -> weather_image_view.setImageResource(R.drawable.darkcloudy)
+//                        802 -> weather_image_view.setImageResource(R.drawable.darkcloudy)
+//                        200 -> weather_image_view.setImageResource(R.drawable.thunderstorm)
+//                        201 -> weather_image_view.setImageResource(R.drawable.thunderstorm)
+//                        202 -> weather_image_view.setImageResource(R.drawable.thunderstorm)
+//                        230 -> weather_image_view.setImageResource(R.drawable.thunderstorm)
+//                        231 -> weather_image_view.setImageResource(R.drawable.thunderstorm)
+//                        232 -> weather_image_view.setImageResource(R.drawable.thunderstorm)
+//                        233 -> weather_image_view.setImageResource(R.drawable.thunderstorm)
+//
+//                        300 -> weather_image_view.setImageResource(R.drawable.rainy)
+//                        301 -> weather_image_view.setImageResource(R.drawable.rainy)
+//                        302 -> weather_image_view.setImageResource(R.drawable.rainy)
+//                        500 -> weather_image_view.setImageResource(R.drawable.rainy)
+//                        501 -> weather_image_view.setImageResource(R.drawable.rainy)
+//                        502 -> weather_image_view.setImageResource(R.drawable.rainy)
+//                        511 -> weather_image_view.setImageResource(R.drawable.rainy)
+//                        520 -> weather_image_view.setImageResource(R.drawable.rainy)
+//                        521 -> weather_image_view.setImageResource(R.drawable.rainy)
+//                        522 -> weather_image_view.setImageResource(R.drawable.rainy)
+//                        900 -> weather_image_view.setImageResource(R.drawable.rainy)
+//
+                        800 -> background_image.setImageResource(R.drawable.sunnywallpaper)
+//
+                        801 -> background_image.setImageResource(R.drawable.sunnywallpaper)
+                        802 -> background_image.setImageResource(R.drawable.sunnywallpaper)
+//
+                        803 -> background_image.setImageResource(R.drawable.cloudy_wallpaper)
+                        804 -> background_image.setImageResource(R.drawable.cloudy_wallpaper)
                     }
 
                     when (weather.data[1].weather.code) {
